@@ -82,7 +82,29 @@ background-color: #1f1f1f;
        // top: 20;
     margin: 0% 10% 0% 20%;
     z-index: 0;
-       
+    .mann{   
+    .man{
+           font-weight: bold;
+           font-size: 90%;
+           margin-top: 0%;
+           width: 50%;
+           background-color: rgb(5, 4, 4);
+           float: left;
+           //display: flex;
+           //flex-direction: row;
+           
+       }
+       .cls{
+        float: right;
+        margin-top: 0%;
+        
+    }}
+    .btn{
+        display: flex;
+       flex-direction: row;
+        margin-top: 2%;
+        float: left;
+    }
 }
    
     .pict{

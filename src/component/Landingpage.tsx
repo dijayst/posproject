@@ -2,105 +2,19 @@ import React,{useState,useEffect} from 'react'
 import logo from '../logo.svg';
 import { Footer } from './footer';
 import { Nav } from './Nav';
-//import { pictures } from './variable';
+import { image } from './variable';
 import { Managefoods } from './Managefoods';
 import { Neworder } from './Neworder';
 import { Cancelo } from './Cancelo';
-//import { Footer } from './Footer';
-/*interface istate{print:pictures[];}
-const [state, setstate] = useState<istate>({
-  print:[
-    {id:1,
-      Foodcode:6768768789789,
-      
-  FoodName:"pizza",
-  title:"Women Red heel sandle",
-  price:"$89",
-  image:require("../image/images13.jpg")},
-    {id:2,
-      
-  title:"Women Red heel sandle",
- 
-      Foodcode:6768768789789,
-      //Instock :true,
-  price:"$89",
-  FoodName:"pizza",
-  //wishlist:"love",
-  image:require("../image/images12.jpg")},
-    {id:3,
-      Foodcode:6768768789789,
-     // Instock :true,
-     title:"Women Red heel sandle",
-  //wishlist:"love",
-  price:"$89",
-  FoodName:"pizza",
-   image:require("../image/images1.jpg") },
-    {id:4,
-      Foodcode:6768768789789,
-     // Instock :true,
-  price:"$89",
-  title:"Women Red heel sandle",
-  FoodName:"pizza",
-  image:require("../image/images4.jpg") },
-  {id:5,
-    Foodcode:6768768789789,
-  price:"$89",
-  title:"Women Red heel sandle",
-  FoodName:"pizza",
-  image:require("../image/images5.jpg")},
-  {id:6,
-    Foodcode:6768768789789,
-  price:"$89",
-  title:"Women Red heel sandle",
-  FoodName:"pizza",
-   image:require("../image/images7.jpg")},
-    {id:7,
-      Foodcode:6768768789789,
-  price:"$89",
-  FoodName:"pizza",
-  title:"Women Red heel sandle",
-     image:require("../image/images8.jpg")},
-      {id:8,
-        Foodcode:6768768789789,
-                    price:"$89",
-      FoodName:"pizza",
-      title:"Women Red heel sandle",
-     
-       image:require("../image/images9.jpg")},
-        {id:9,
-          Foodcode:6768768789789,
-                 //  cart:"Add to Cart",
-  title:"Women Red heel sandle",
- 
-          price:"$89",
-                  
-        FoodName:"pizza",
-         
-         image:require("../image/images10.jpg")},
-          {id:10,
-            Foodcode:6768768789789,
-                            
-  title:"Women Red heel sandle",
-  // Instock : true,
-            
-  // wishlist:"love",
-            price:"$89",
-                    FoodName:"pizza",
-           
-           image:require("../image/images11.jpg")}
-  ]})
+import axios from 'axios';
 
-
-  {state.print.map((item)=>{return(
-         <div key={item.id} className="pict">
-         <p>{item.id}</p>
-         <p>{item.price}</p>
-         </div>
-       )})}
-       
-*/
-
-
+interface istar{
+  id:number;
+  price:number;
+  foodcode:number;
+  foodname:string;
+  image:string;}
+ // rang:image[];}
 interface istate{
   pop:boolean;
   //popp:boolean;
@@ -121,13 +35,15 @@ export const Landingpage:React.FC = () => {
   //const date='${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}';
 
 
-  const [range, setrange] = useState([])
+  const [range, setrange] = useState<istar[]>([]);
     
   useEffect(()=>{
-      axios.get("https://eembryo.herokuapp.com/stack")
+
+
+      axios.get<istar[]>("https://eembryo.herokuapp.com/stack")
       .then(Response=>{
           setrange(Response.data)
-          setrange(Response.data.range)
+         // setrange({rang:Response.data.range})
           //setproductlist(Response.productimage)
              console.log(Response.data)
             // console.log(Response.productimage)
@@ -225,29 +141,31 @@ console.log(orderpop)
      <div className="getimage">
      {
        range.map((item)=>{
-         return<div key={item}>
-           <img src={item} height="100px" width="100px" alt="uploadimage"/>
-           <p>fcode</p>
-           <p>foodname</p>
-           <p>price</p>
+         return<div key={item.id}>
+           <img src={item.image} height="100px" width="100px" alt="uploadimage"/>
+           <p>{item.foodcode}</p>
+           <p>{item.foodname}</p>
+           <p>{item.price}</p>
            </div>
        })
      }
        <div className="pict1">
        {buttonpop.pop?
              <Managefoods trigger={handlemangefoo} >
-<input placeholder="search"/>
+<input placeholder="search"/>          
         </Managefoods>:""
 }
 {orderpop.popp?
 <Neworder trigger={handleorde}>
 <input placeholder="search"/>
+          
 </Neworder>:""
 }  
 
 {cancellpop.poppy?
-<Cancelo trigger={handlecance}>
+<Cancelo trigger={handlecance} >
 <input placeholder="search"/>
+    
 </Cancelo>:""
 }
        </div>

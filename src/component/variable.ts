@@ -1,4 +1,25 @@
+import React, { Component } from 'react'
+import axios from 'axios';
+
+
+
+export default class variable extends Component {
+ private static serverUrl:string="https://eembryo.herokuapp.com/stack";
+public static getAllUsers(){
+  let dataUrl:string='${this.serverUrl}/image';
+  return axios.get(dataUrl);}
+
+}
 //export const print=
+
+
+export interface image{
+  price:number;
+  foodcode:number;
+  foodname:string;
+  image:string;
+ // rang:any[]
+}
 
 export interface pictures{
   id:number;

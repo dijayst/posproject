@@ -42,9 +42,9 @@ export const Footer:React.FC<iprops> = ({settrigger,neworder,cancel}:iprops) => 
 //git add README.md
 //git commit -m "first commit"
 //git branch -M master
-//git remote add origin git@github.com:dijayst/Spotifyclone.git
-                            github.com:dijayst/Spotifyclone.git
-//git push -u origin master
+//git remote add origin git@github.com:dijayst/posproject.git
+                            //github.com:dijayst/Spotifyclone.git
+//git push -u origin backend
 
 
 //git remote set-url origin git@github.com:dijayst/Spotifyclone.git
