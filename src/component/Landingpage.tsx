@@ -151,7 +151,7 @@ console.log(orderpop)
      }
        <div className="pict1">
        {buttonpop.pop?
-             <Managefoods trigger={handlemangefoo} >
+             <Managefoods trigger={handlemangefoo} trig={handlemangefood} >
 <input placeholder="search"/>          
         </Managefoods>:""
 }
