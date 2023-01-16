@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import logo from '../logo.svg';
 import { Footer } from './footer';
 import { Nav } from './Nav';
-import { image } from './variable';
+//import { image } from './variable';
 import { Managefoods } from './Managefoods';
 import { Neworder } from './Neworder';
 import { Cancelo } from './Cancelo';
@@ -13,7 +13,7 @@ interface istar{
   price:number;
   foodcode:number;
   foodname:string;
-  image:string;}
+  productimage:string;}
  // rang:image[];}
 interface istate{
   pop:boolean;
@@ -40,7 +40,7 @@ export const Landingpage:React.FC = () => {
   useEffect(()=>{
 
 
-      axios.get<istar[]>("https://eembryo.herokuapp.com/stack")
+      axios.get<istar[]>("http://localhost:1150/file")
       .then(Response=>{
           setrange(Response.data)
          // setrange({rang:Response.data.range})
@@ -142,7 +142,7 @@ console.log(orderpop)
      {
        range.map((item)=>{
          return<div key={item.id}>
-           <img src={item.image} height="100px" width="100px" alt="uploadimage"/>
+           <img src={item.productimage} height="100px" width="100px" alt="uploadimage"/>
            <p>{item.foodcode}</p>
            <p>{item.foodname}</p>
            <p>{item.price}</p>

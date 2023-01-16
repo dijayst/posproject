@@ -33,7 +33,7 @@ export const Footer:React.FC<iprops> = ({settrigger,neworder,cancel}:iprops) => 
 //npm install @react-navigation/native
 //npm i react-native-vector-icons
 //npm install axios
-
+// npm install react-native-gesture-handler react-native-reanimated
 
 
 

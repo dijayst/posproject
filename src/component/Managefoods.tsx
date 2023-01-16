@@ -1,6 +1,6 @@
-import React,{useState,useEffect, ReactEventHandler} from 'react'
+import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 
 //interface istar{
@@ -13,10 +13,8 @@ import { Link } from 'react-router-dom';
 }
 
 
-interface istate{
-  file:string;
-  filepreview:string;
-}
+//interface istatee{file:string;
+  //filepreview:string;}
 interface istae { 
   Foodcode:string;
 Foodname:string;
@@ -42,16 +40,17 @@ interface iprops{
   // children:JSX.Element |JSX.Element;
    
 } 
-interface istate{
-  count:number;
-}
+//interface istate{
+  //count:number;}
 export const Managefoods:React.FC <iprops>= ({trigger,trig,children}:iprops) => {
-const[display,setdisplay]=useState<istate>({count:1})
-const handlepre=(index:any):void=>{
-  setdisplay({count :display.count+ 1})
-  console.log(index);
+const[display,setdisplay]=useState(1)
+ 
+       const handlepre=(index: React.SetStateAction<number>)=>{
+//  setdisplay({count :display.count+ 1})
+setdisplay(index)  
+console.log(index);
 }
-
+console.log(display)
 
 
 
@@ -61,7 +60,7 @@ const [range, setrange] = useState<istar[]>([]);
 useEffect(()=>{
 
 
-    axios.get<istar[]>("https://eembryo.herokuapp.com/stack")
+    axios.get<istar[]>("http://localhost:1150/file")
     .then(Response=>{
         setrange(Response.data)
        // setrange({rang:Response.data.range})
@@ -85,21 +84,26 @@ console.log(range)
 
 
 
-    
-const [userinfo, setuserinfo] = useState<istate>([]
-  // file:[],
+    /*
+const [userinfo, setuserinfo] = useState<istatee>({
+   file:""});
   //filepreview:null
- );
+ 
  
 // const [Text, setText] =useState("");
 
- const saveFile = (e:React.ChangeEvent<HTMLInputElement>,index:number) => {
-  const target=e.target as HTMLInputElement
+ const saveFile = (e:React.ChangeEvent<HTMLInputElement>.target:EventTarget& HTMLInputElement):void => {
+   let url=URL.createObjectURL(e.target.files[0]);
+   setuserinfo(url)
+   console.log(url)
+
+
+   const file=e.target as HTMLInputElement
   const files=[...Object.values(target.files!)]
   setuserinfo([...files])
 
   // setuserinfo({...userinfo,file:e.target.files[0],
-   //filepreview:URL.createObjectURL(e.target.files[0]),
+   filepreview:URL.createObjectURL(e.target.files[0]),
    
    });
    console.log(userinfo)
@@ -110,7 +114,7 @@ const [userinfo, setuserinfo] = useState<istate>([]
 
 
 
-
+*/
 
 
 
@@ -131,23 +135,23 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>):void=>{
 
 
 
-  const handledescrip =(e) => {
+  const handledescrip =(e: { preventDefault: () => void; })=> {
     e.preventDefault()
 
 
-    console.log({userinfo});
+    //console.log({userinfo});
   console.log({forminput});
   //console.log(e.target.value);
 
   const formdata = new FormData();
-  formdata.append('avatar',userinfo.file);
+  //formdata.append('avatar',userinfo.file);
   formdata.set("FoodCode", forminput.Foodcode)
   formdata.set("foodname", forminput.Foodname)
   formdata.set("price", forminput.Price)
 
   //console.log(e.target.files);
  // console.log({forminput});
-      axios.post("https://eembryo.herokuapp.com/api/insert",formdata,
+      axios.post("http://localhost:1150/api/insert",formdata,
        /* {headers:{"content-Type":"multipart/form-data"},
       
        productimage:userinfo.file,
@@ -190,21 +194,25 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>):void=>{
 close
             </button>
             </div>
-
-            <div className={display.count===1?"tabs active-tabs":"tabs"}>
-            <button onClick={()=>handlepre(1)}> FOODS LIST</button></div> <div className={display.count===2?"tabs active-tabs":"tabs"}><button onClick={()=>handlepre(2)}>MANAGE FOODS</button></div>
+            <div className="box">
+              <div className="tabs">
+            <div className={display===1?"tab active-tab":"tab"}onClick={()=>handlepre(1)}> FOODS LIST</div> 
+            <div className={display===2?"tab active-tab":"tab"} onClick={()=>handlepre(2)}>MANAGE FOODS </div></div>
+          
+          
             {children}
-            <div className="content-tab">
-            <div className={display.count===1?"content active-content":"content"}>
+            <div className="contentt">
+            <div className= {display===2?"contents active-contents":"contents"}>
               
 <form onSubmit={handledescrip}>
-<label >Food Code :</label><input value={forminput.Foodcode} onChange={(e)=>{handleChange(e)}} id="forminput.foodcode" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
+  <div className="data">
+    <label >Food Code :</label><input value={forminput.Foodcode} onChange={(e)=>{handleChange(e)}} id="forminput.foodcode" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
 <label >Food Name :</label><input value={forminput.Foodname} onChange={(e)=>{handleChange(e)}} id="forminput.foodname" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
    <label>PRICE (USD)</label><input value={forminput.Price} onChange={(e)=>{handleChange(e)}} id="forminput.Price" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
-
+{/*}
 <div>
 <input type="file" name="upload_file" onChange={(e)=>{saveFile(e)}} />
               <br/>
@@ -212,14 +220,16 @@ close
               
                  {userinfo.filepreview !==null ?<img src={userinfo.filepreview} height="100px" width="100px" alt="uploadimage"/> :null}
        
-                 </div>    
+    </div>    */}
 <br/>
-
-<button type="submit">ADD</button> 
+</div>
+<div className="imj"> <img src="../image/downloadb.png" alt="cook"/></div>
+<button type="submit">save</button>  
             </form>
    
             </div>
-            <div className={display.count===2?"content active-content":"content"}>
+            <div className= {display===1?"contents active-contents":"contents"}>
+           <p>fhgfgh</p>
             { range.map((item)=>{
                    return<div key={item.id}>
                        <table>
@@ -247,6 +257,8 @@ close
                      </div>
                  })
                }
+               
+               </div>
                </div></div>
             </div>
     )
