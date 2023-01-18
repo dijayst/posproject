@@ -119,8 +119,7 @@ console.log(orderpop)
               <div  className="header">
             <img src={logo} className="logo" alt="logo" />
              <div className="indiv">
-             <p className="headerna1">FASTFOOD :{buttonpop.pop}<br/>
-             <button onClick={handlemangefood}>click</button>
+             <p className="headerna1">FASTFOOD <br/>
              <hr/>
            RESTAURANT</p>
            
@@ -131,9 +130,9 @@ console.log(orderpop)
        <label>transitionno</label><br/>
        <input placeholder="enter transaction number" className="input"/>
 
-       <p>Date</p>
+       <p className="date">Date:</p>
        </div>
-       <input placeholder="enter transaction number" className="input"/>
+       <input placeholder="enter transaction number" className="input1"/>
        <p className="amt">Amount</p>
     
        </form>
@@ -171,6 +170,7 @@ console.log(orderpop)
        </div>
        <Nav/>
      </div>
+     
      <div className="footd">
      <Footer cancel={handlecancel} neworder={handleorder} settrigger={handlemangefood}/>
    

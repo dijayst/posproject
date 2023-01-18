@@ -84,37 +84,24 @@ console.log(range)
 
 
 
-    /*
-const [userinfo, setuserinfo] = useState<istatee>({
-   file:""});
-  //filepreview:null
+    
+const [userinfo, setuserinfo] = useState<string>("");
  
- 
-// const [Text, setText] =useState("");
 
- const saveFile = (e:React.ChangeEvent<HTMLInputElement>.target:EventTarget& HTMLInputElement):void => {
-   let url=URL.createObjectURL(e.target.files[0]);
-   setuserinfo(url)
-   console.log(url)
-
-
-   const file=e.target as HTMLInputElement
-  const files=[...Object.values(target.files!)]
-  setuserinfo([...files])
-
-  // setuserinfo({...userinfo,file:e.target.files[0],
-   filepreview:URL.createObjectURL(e.target.files[0]),
-   
-   });
+ const saveFile = (files: FileList|null) => {
+   if (files){
+     const fileRef=files[0]||""
+     const fileType:string=fileRef.type||""
+     console.log("uploaded already",fileType)
+     const reader=new FileReader()
+     reader.readAsBinaryString(fileRef)
+     reader.onload=(ev:any)=>{
+       setuserinfo(`data:${fileType};base64,${btoa(ev.target.result)}`)
+     }
+   }
+   };
    console.log(userinfo)
-      };
-
-
-
-
-
-
-*/
+      
 
 
 
@@ -144,7 +131,7 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>):void=>{
   //console.log(e.target.value);
 
   const formdata = new FormData();
-  //formdata.append('avatar',userinfo.file);
+  formdata.append('avatar',userinfo);
   formdata.set("FoodCode", forminput.Foodcode)
   formdata.set("foodname", forminput.Foodname)
   formdata.set("price", forminput.Price)
@@ -206,24 +193,23 @@ close
               
 <form onSubmit={handledescrip}>
   <div className="data">
-    <label >Food Code :</label><input value={forminput.Foodcode} onChange={(e)=>{handleChange(e)}} id="forminput.foodcode" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
+    <label >Food Code :</label><input value={forminput.Foodcode} onChange={(e)=>{handleChange(e)}} id="Foodcode" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
-<label >Food Name :</label><input value={forminput.Foodname} onChange={(e)=>{handleChange(e)}} id="forminput.foodname" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
+<label >Food Name :</label><input value={forminput.Foodname} onChange={(e)=>{handleChange(e)}} id="Foodname" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
-   <label>PRICE (USD)</label><input value={forminput.Price} onChange={(e)=>{handleChange(e)}} id="forminput.Price" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
+   <label>PRICE (USD)</label><input value={forminput.Price} onChange={(e)=>{handleChange(e)}} id="Price" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
-{/*}
+
 <div>
-<input type="file" name="upload_file" onChange={(e)=>{saveFile(e)}} />
+<input type="file" name="upload_file" onChange={(e)=>{saveFile(e.target.files)}} />
               <br/>
               <br/>
               
-                 {userinfo.filepreview !==null ?<img src={userinfo.filepreview} height="100px" width="100px" alt="uploadimage"/> :null}
+                 {(userinfo.indexOf("image/")>-1) && <img src={userinfo} height="100px" width="100px" alt="uploadimage"/>}
        
-    </div>    */}
+    </div>    
 <br/>
 </div>
-<div className="imj"> <img src="../image/downloadb.png" alt="cook"/></div>
 <button type="submit">save</button>  
             </form>
    
