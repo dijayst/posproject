@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import logo from '../logo.svg';
+import logo from '../image/download9.jpg';
 import { Footer } from './footer';
 import { Nav } from './Nav';
 //import { image } from './variable';
@@ -10,9 +10,9 @@ import axios from 'axios';
 
 interface istar{
   id:number;
-  price:number;
-  foodcode:number;
-  foodname:string;
+  Price:number;
+  Foodcode:number;
+  Foodname:string;
   productimage:string;}
  // rang:image[];}
 interface istate{
@@ -43,15 +43,16 @@ export const Landingpage:React.FC = () => {
       axios.get<istar[]>("http://localhost:1150/file")
       .then(Response=>{
           setrange(Response.data)
+          setrange(range)
          // setrange({rang:Response.data.range})
           //setproductlist(Response.productimage)
              console.log(Response.data)
             // console.log(Response.productimage)
-             console.log("i gotten it")
+             console.log("i gotte it")
            })
            .catch(error=>{
              console.log(error)
-             console.log("i deny")
+             console.log("i cou deny")
            })
           
   })
@@ -113,6 +114,9 @@ const handlecance=():void=>{
   }
 console.log(buttonpop)
 console.log(orderpop)
+
+const [click, setclick] = useState<boolean>(false)
+
     return (
         <div className="headerapp">
         
@@ -124,6 +128,7 @@ console.log(orderpop)
            RESTAURANT</p>
            
             </div>
+            <button onClick={()=>setclick(!click)}>cart</button>
             </div>
    <div className="content">
      <form><div className="trans">
@@ -142,9 +147,9 @@ console.log(orderpop)
        range.map((item)=>{
          return<div key={item.id}>
            <img src={item.productimage} height="100px" width="100px" alt="uploadimage"/>
-           <p>{item.foodcode}</p>
-           <p>{item.foodname}</p>
-           <p>{item.price}</p>
+           <p>{item.Foodcode}</p>
+           <p>{item.Foodname}</p>
+           <p>{item.Price}</p>
            </div>
        })
      }
@@ -168,7 +173,7 @@ console.log(orderpop)
 </Cancelo>:""
 }
        </div>
-       <Nav/>
+       <Nav className={click ? 'nav-menu active' : 'nav-menu'}/>
      </div>
      
      <div className="footd">

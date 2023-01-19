@@ -63,6 +63,7 @@ useEffect(()=>{
     axios.get<istar[]>("http://localhost:1150/file")
     .then(Response=>{
         setrange(Response.data)
+        setrange(range)
        // setrange({rang:Response.data.range})
         //setproductlist(Response.productimage)
            console.log(Response.data)
@@ -126,7 +127,7 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>):void=>{
     e.preventDefault()
 
 
-    //console.log({userinfo});
+    //console.log({file});
   console.log({forminput});
   //console.log(e.target.value);
 
@@ -141,7 +142,7 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>):void=>{
       axios.post("http://localhost:1150/api/insert",formdata,
        /* {headers:{"content-Type":"multipart/form-data"},
       
-       productimage:userinfo.file,
+       productimage:file.file,
         Foodname:forminput.Foodname,
          price:forminput.price,
          domesticshipping:forminput.DOMESTIC,
