@@ -7,7 +7,22 @@ import React from 'react'
 
 
 
-export const Nav:React.FC = () => {
+interface istar{
+  id:number;
+  price:number;
+  foodcode:number;
+  foodname:string;
+  //image:string;
+}
+interface iprops{
+ // id:number;
+  //price:number;
+  //foodcode:number;
+ // foodname:string;
+  //image:string;
+  order:istar[]
+}
+export const Nav:React.FC<iprops> = ({order}) => {
     
 //const [click, setClick] = useState(false);
 
@@ -31,6 +46,7 @@ export const Nav:React.FC = () => {
                           </tr>
                         </thead>
                         <tbody className="tbody">
+                          
                               <tr >
                             <td>hjgjgjk</td>
                             <td>hjgjgjk</td>
@@ -46,17 +62,16 @@ export const Nav:React.FC = () => {
         <form>
        <label>No of foods</label><br/>
        <label>Recieved amount</label>
-       <input placeholder="enter transaction number" />
+       <input style={{backgroundColor:"#1f1f1f"}} placeholder="enter transaction number" />
        <label>Balanced amount</label>
-       <input placeholder="enter transaction number" />
+       <input style={{backgroundColor:"#1f1f1f"}} placeholder="enter transaction number" />
        <p>Amount</p>
     
        </form>
         </div>
             <div className="footerdivr">
                 <button className="button5">PAY</button>
-                <button className="button6">ExIT</button>
-            </div>
+                 </div>
         </div>)
 }
 
@@ -64,3 +79,5 @@ export const Nav:React.FC = () => {
 
 
 
+// <button className="button6">ExIT</button>
+          

@@ -71,7 +71,7 @@ close
                               <td>{item.foodcode}</td>
                               <td>{item.foodname}</td>
                               <td>{item.price}</td>
-                             
+                             <td><button onClick={trigger}>cancel</button></td>
                                </tr>
                              </tbody>
                        

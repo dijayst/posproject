@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import logo from '../image/download9.jpg';
 import { Footer } from './footer';
-import { Nav } from './Nav';
+//import { Nav } from './Nav';
 //import { image } from './variable';
 import { Managefoods } from './Managefoods';
 import { Neworder } from './Neworder';
@@ -115,7 +115,8 @@ const handlecance=():void=>{
 console.log(buttonpop)
 console.log(orderpop)
 
-const [click, setclick] = useState<boolean>(false)
+const [order, setorder] = useState<istar[]>([])
+console.log(order)
 
     return (
         <div className="headerapp">
@@ -128,7 +129,6 @@ const [click, setclick] = useState<boolean>(false)
            RESTAURANT</p>
            
             </div>
-            <button onClick={()=>setclick(!click)}>cart</button>
             </div>
    <div className="content">
      <form><div className="trans">
@@ -143,37 +143,79 @@ const [click, setclick] = useState<boolean>(false)
        </form>
        </div>
      <div className="getimage">
+      
      {
        range.map((item)=>{
          return<div key={item.id}>
            <img src={item.productimage} height="100px" width="100px" alt="uploadimage"/>
-           <p>{item.Foodcode}</p>
-           <p>{item.Foodname}</p>
-           <p>{item.Price}</p>
+           <p>Food Code :{item.Foodcode}</p>
+           <p>Food Name: {item.Foodname}</p>
+           <p>Price : {item.Price}</p>
+           <button onClick={()=>setorder([...order,item])}>Add to cart</button>
            </div>
        })
      }
        <div className="pict1">
        {buttonpop.pop?
              <Managefoods trigger={handlemangefoo} trig={handlemangefood} >
-<input placeholder="search"/>          
+ <input style={{backgroundColor:"#272727"}} placeholder="search"/>          
+
         </Managefoods>:""
 }
 {orderpop.popp?
 <Neworder trigger={handleorde}>
-<input placeholder="search"/>
+<input style={{backgroundColor:"#272727"}} placeholder="search"/>
           
 </Neworder>:""
 }  
 
 {cancellpop.poppy?
 <Cancelo trigger={handlecance} >
-<input placeholder="search"/>
+<input style={{backgroundColor:"#272727"}} placeholder="search"/>
     
 </Cancelo>:""
 }
        </div>
-       <Nav className={click ? 'nav-menu active' : 'nav-menu'}/>
+       <div className="di">
+           
+           <div className="sidebar">
+           <table className="table">
+                             <thead className="thead">
+                               <tr>
+                                 <th>ID</th>
+                                 <th>food name</th>
+                                 <th>price</th>
+                                 
+                             
+                               </tr>
+                             </thead>
+                             <tbody className="tbody">
+                               {order.map((item)=>{return(
+                                   <tr >
+                                 <td>{item.id}</td>
+                                 <td>{item.Foodname}</td>
+                                 <td>{item.Price}</td>
+                                  </tr>)})}
+                                </tbody>
+                           </table>
+     
+             </div>
+             <div className="navdivlow">
+             <form>
+            <label>No of foods</label><br/>
+            <label>Recieved amount</label>
+            <input style={{backgroundColor:"#1f1f1f"}} placeholder="enter transaction number" />
+            <label>Balanced amount</label>
+            <input style={{backgroundColor:"#1f1f1f"}} placeholder="enter transaction number" />
+            <p>Amount</p>
+         
+            </form>
+             </div>
+                 <div className="footerdivr">
+                     <button className="button5">PAY</button>
+                      </div>
+             </div>
+    
      </div>
      
      <div className="footd">

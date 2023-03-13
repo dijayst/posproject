@@ -178,6 +178,7 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>):void=>{
         <div className="popup">
           <div className="mann">
             <p className="man">MANAGE FOOD'S</p>
+            
             <button onClick={trigger} className="cls">
 close
             </button>
@@ -194,11 +195,11 @@ close
               
 <form onSubmit={handledescrip}>
   <div className="data">
-    <label >Food Code :</label><input value={forminput.Foodcode} onChange={(e)=>{handleChange(e)}} id="Foodcode" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
+    <label >Food Code :</label><input style={{backgroundColor:"#272727"}} value={forminput.Foodcode} onChange={(e)=>{handleChange(e)}} id="Foodcode" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
-<label >Food Name :</label><input value={forminput.Foodname} onChange={(e)=>{handleChange(e)}} id="Foodname" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
+<label >Food Name :</label><input style={{backgroundColor:"#272727"}} value={forminput.Foodname} onChange={(e)=>{handleChange(e)}} id="Foodname" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
-   <label>PRICE (USD)</label><input value={forminput.Price} onChange={(e)=>{handleChange(e)}} id="Price" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
+   <label>PRICE (USD)</label><input style={{backgroundColor:"#272727"}} value={forminput.Price} onChange={(e)=>{handleChange(e)}} id="Price" type="text" placeholder="ENTER YOUR PRODUCT NAME" />
 <br/>
 
 <div>
@@ -211,7 +212,7 @@ close
     </div>    
 <br/>
 </div>
-<button type="submit">save</button>  
+<button style={{backgroundColor:"blue"}} type="submit">save</button>  
             </form>
    
             </div>

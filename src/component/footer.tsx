@@ -22,13 +22,14 @@ export const Footer:React.FC<iprops> = ({settrigger,neworder,cancel}:iprops) => 
             <div className="footerdivl">
              
             <button onClick={settrigger} className="button">MANAGE FOODS</button>
-            <button onClick={neworder} className="button">NEW ORDERS</button>
             <button onClick={cancel} className="button">CANCEL ORDER</button>
-            <button className="button">REPORT</button>
+       
             </div>
             </div>
     )
 }
+// <button onClick={neworder} className="button">NEW ORDERS</button>
+           
 //npm install @react-navigation/bottom-tabs
 //npm install @react-navigation/native
 //npm i react-native-vector-icons

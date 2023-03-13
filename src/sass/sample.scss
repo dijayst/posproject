@@ -7,7 +7,7 @@
     font-family: "Fira sans",sans-serif;
  background-color: saddlebrown;
     height: 100%;
-}
+
   .headerapp{
     background-color: #282c34;
     height: 100%;
@@ -53,6 +53,7 @@ background-color: #1f1f1f;
         .input{
             height: 20px;
             margin-left: 17px;
+            background-color:#1f1f1f;
         }
         .date{
             height: 20px;
@@ -63,7 +64,7 @@ background-color: #1f1f1f;
     .input1{
         height: 20px;
         margin-left: 100px;
-   
+   background-color: #1f1f1f;
     }
     .amt{
         float: right;
@@ -79,7 +80,8 @@ background-color: #1f1f1f;
      
     .pict1{
        // display: flex;
-        left: 0;background-color: blueviolet;
+        left: 0;
+        background-color: #1f1f1f;
         width:50% ;
         height: 100%;
     display: grid;
@@ -89,7 +91,8 @@ background-color: #1f1f1f;
     //margin: 0px 0px 80px 80px;
     .popup{height: 190%;
         width: 190%;
-         background-color: blue;
+         background-color: #1f1f1f;
+         border: 2px solid grey;
        // justify-content: center;
         //right: 0;
        // top: 20;
@@ -101,7 +104,7 @@ background-color: #1f1f1f;
            font-size: 90%;
            margin-top: 0%;
            width: 50%;
-           background-color: rgb(5, 4, 4);
+          // background-color: rgb(5, 4, 4);
            float: left;
            //display: flex;
            //flex-direction: row;
@@ -118,14 +121,18 @@ background-color: #1f1f1f;
     width: 373px;
     height: 280px;
     margin: auto;
-    border: 2px solid grey;
+  //  margin: 0% 0% 0% -10%;
+   // border: 2px solid grey;
 .tabs{display: flex;
 justify-content: center;
+//margin: 0% 0% 0% 0%;
+//background-color: green;
 .tab{
     flex: 1;
     background-color: grey;
     text-align: center;
     position: relative;
+   // margin: 0% 0% 0% -40%;
 }
 .active-tab{
     border: none;
@@ -201,7 +208,10 @@ margin-top: 7.5%;
     //.pict{text-align: center;
        // border-radius: 0.3rem;
        // color: red;}
-
+  //     .nav-menu{
+//.nav-menu.active{}
+       
+       
      .di{ 
        // right:0;
        float: right;
@@ -259,7 +269,9 @@ background-color: #7e3429;
 
 
 }
+
 }
+//}
 
 
     
@@ -287,6 +299,6 @@ background-color: #7e3429;
 
     }
 
-
+}
 
     @import 'mobile';
