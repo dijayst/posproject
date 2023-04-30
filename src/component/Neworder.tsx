@@ -23,7 +23,7 @@ export const Neworder:React.FC<iprops> = ({trigger,children}:iprops) => {
   useEffect(()=>{
 
 
-      axios.get<istar[]>("https://eembryo.herokuapp.com/stack")
+      axios.get<istar[]>("https://stormy-brook-52450.herokuapp.com/stack")
       .then(Response=>{
           setrange(Response.data)
          // setrange({rang:Response.data.range})

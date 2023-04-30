@@ -139,7 +139,7 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>):void=>{
 
   //console.log(e.target.files);
  // console.log({forminput});
-      axios.post("http://localhost:1150/api/insert",formdata,
+      axios.post("https://stormy-brook-52450.herokuapp.com/api/insert",formdata,
        /* {headers:{"content-Type":"multipart/form-data"},
       
        productimage:file.file,

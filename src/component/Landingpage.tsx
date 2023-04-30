@@ -40,7 +40,7 @@ export const Landingpage:React.FC = () => {
   useEffect(()=>{
 
 
-      axios.get<istar[]>("http://localhost:1150/file")
+      axios.get<istar[]>("https://stormy-brook-52450.herokuapp.com/file")
       .then(Response=>{
           setrange(Response.data)
           setrange(range)
