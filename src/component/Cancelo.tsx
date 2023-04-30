@@ -23,7 +23,7 @@ export const Cancelo:React.FC<iprops> = ({trigger,children}:iprops) => {
   useEffect(()=>{
 
 
-      axios.get<istar[]>("https://stormy-brook-52450.herokuapp.com/")
+      axios.get<istar[]>("https://stormy-brook-52450.herokuapp.com/Managefood")
       .then(Response=>{
           setrange(Response.data)
          // setrange({rang:Response.data.range})

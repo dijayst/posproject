@@ -60,7 +60,7 @@ const [range, setrange] = useState<istar[]>([]);
 useEffect(()=>{
 
 
-    axios.get<istar[]>("http://localhost:1150/file")
+    axios.get<istar[]>("https://stormy-brook-52450.herokuapp.com/Managefood")
     .then(Response=>{
         setrange(Response.data)
         setrange(range)
@@ -139,7 +139,7 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>):void=>{
 
   //console.log(e.target.files);
  // console.log({forminput});
-      axios.post("https://stormy-brook-52450.herokuapp.com/api/insert",formdata,
+      axios.post("https://stormy-brook-52450.herokuapp.com/Managefood",formdata,
        /* {headers:{"content-Type":"multipart/form-data"},
       
        productimage:file.file,

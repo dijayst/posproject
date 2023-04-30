@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 export default class variable extends Component {
- private static serverUrl:string="https://stormy-brook-52450.herokuapp.com/stack";
+ private static serverUrl:string="https://stormy-brook-52450.herokuapp.com/Managefood";
 public static getAllUsers(){
   let dataUrl:string='${this.serverUrl}/image';
   return axios.get(dataUrl);}
